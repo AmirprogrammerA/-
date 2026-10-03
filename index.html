@@ -49,7 +49,7 @@
     </div>
 
     <!-- ویدیو (که در پس‌زمینه دانلود می‌شود) -->
-    <video id="bg-video" loop muted playsinline>
+    <video id="bg-video" autoplay muted playsinline >
         <source src="HHA.mp4" type="video/mp4">
         مرورگر شما از ویدیو پشتیبانی نمی‌کند.
     </video>
@@ -68,13 +68,6 @@
                 setTimeout(() => {
                     loader.style.display = 'none';
                     
-                    // شروع پخش ویدیو
-                    video.play().catch(error => {
-                        console.log("ERROR!!!!.");
-                    });
-                }, 500);
-            }, 3000);
-        });
     </script>
 </body>
 </html>
