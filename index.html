@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        /* استایل صفحه لودینگ */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        /* استایل ویدیو */
+        #bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* برای فول اسکرین شدن بدون دفرمه شدن */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- صفحه لودینگ -->
+    <div id="loader">
+        <h1>LOADING WEBSITE...</h1>
+    </div>
+
+    <!-- ویدیو (که در پس‌زمینه دانلود می‌شود) -->
+    <video id="bg-video" loop muted playsinline>
+        <source src="HHA.mp4" type="video/mp4">
+        مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+    </video>
+
+    <script>
+        const loader = document.getElementById('loader');
+        const video = document.getElementById('bg-video');
+
+        // صبر کردن به مدت 3 ثانیه (3000 میلی‌ثانیه)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                // مخفی کردن لودینگ
+                loader.style.opacity = '0';
+                
+                // حذف کامل لودینگ بعد از انیمیشن
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    
+                    // شروع پخش ویدیو
+                    video.play().catch(error => {
+                        console.log("ERROR!!!!.");
+                    });
+                }, 500);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
